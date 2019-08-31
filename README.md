@@ -1,17 +1,17 @@
 # girepo
 <a id="markdown-girepo" name="girepo"></a>
 
-This makes it easy to investigate repositories and describe results as a markdown table format. 
+This makes it easy to investigate repositories at Github and to describe the results as a markdown table format. 
 
 <!-- TOC -->
 
 - [Installation](#installation)
 - [Usage](#usage)
 - [Realworld Example](#realworld-example)
-    - [Simple Case](#simple-case)
-    - [Input From File Case](#input-from-file-case)
-    - [Whitespace Case](#whitespace-case)
-    - [Sort case](#sort-case)
+    - [Simple](#simple)
+    - [Input From File](#input-from-file)
+    - [Whitespace](#whitespace)
+    - [Sort](#sort)
 
 <!-- /TOC -->
 
@@ -52,7 +52,7 @@ God bless you.
 ## Realworld Example
 <a id="markdown-realworld-example" name="realworld-example"></a>
 
-### Simple Case
+### Simple
 <a id="markdown-simple-case" name="simple-case"></a>
 
 If you want to investigate repositories of frontend framework, you can run this script like below.
@@ -78,7 +78,7 @@ Then you can get the table format of markdown.
 | facebook | react | 134973 | 59.1 | 2013-05-24 | 2019-08-25 | MIT License | JavaScript | A declarative, efficient, and flexible JavaScript library for building user interfaces. | https://github.com/facebook/react |
 | vuejs | vue | 146721 | 66.12 | 2013-07-29 | 2019-08-25 | MIT License | JavaScript | 🖖 Vue.js is a progressive, incrementally-adoptable JavaScript framework for building UI on the web. | https://github.com/vuejs/vue |
 
-### Input From File Case
+### Input From File
 <a id="markdown-input-from-file-case" name="input-from-file-case"></a>
 
 If you want to use a bulk input, please prepare a file whose content is like below. Do not contain a blank line.
@@ -107,7 +107,7 @@ Output:
 ```
 
 
-### Whitespace Case
+### Whitespace
 <a id="markdown-whitespace-case" name="whitespace-case"></a>
 when you copy a name of an owner and a repository on a topic page the below, you might get whitespaces between the owner and repository like ` vuetifyjs / vuetify `. So this script enables to parse them. 
 
@@ -128,7 +128,7 @@ Output:
 | kriasoft | react-starter-kit | 19457 | 9.94 | 2014-04-16 | 2019-08-25 | MIT License | JavaScript | React Starter Kit — isomorphic web app boilerplate (Node.js, Express, GraphQL, React.js, Babel, PostCSS, Webpack, Browsersync) | https://github.com/kriasoft/react-starter-kit |
 ```
 
-### Sort case
+### Sort
 <a id="markdown-sort-case" name="sort-case"></a>
 ```sh
 girepo angular/angular facebook/react vuejs/vue  --asc star
