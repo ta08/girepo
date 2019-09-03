@@ -35,6 +35,8 @@ def create_argparser(args, sort_keys):
     )
     parser.add_argument('repo_full_names', type=full_name_type, nargs='+',
                         help='the target repositories written like owner/repository')
+    parser.add_argument('--headless', dest="headless", action='store_true',
+                        help='not to describe table headers')
 
     group = parser.add_mutually_exclusive_group()
     group.add_argument('-a', '--asc', dest="asc_key", choices=sort_keys,

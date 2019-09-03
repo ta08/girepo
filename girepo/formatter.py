@@ -1,12 +1,22 @@
 #!/usr/bin/env python
 
 
-def convert_as_table_format(column_names, contents, line_separator='\n', separator='|'):
-    table_header = convert_as_row_format(column_names)
-    divider_tail = ' ------ {0}'.format(separator) * len(column_names)
-    divider = '{0}{1}'.format(separator, divider_tail)
+def convert_as_table_format(column_names, contents, is_headless=False, line_separator='\n', separator='|'):
+    accumulation = []
+
+    if not is_headless:
+        table_header = convert_as_row_format(column_names)
+        divider = prepare_divider(separator, len(column_names))
+        accumulation.extend([table_header, divider])
+
     rows = [convert_as_row_format(row_items, separator) for row_items in contents]
-    return line_separator.join([table_header, divider, *rows])
+    accumulation.extend(rows)
+    return line_separator.join(accumulation)
+
+
+def prepare_divider(separator, times):
+    divider_tail = ' ------ {0}'.format(separator) * times
+    return '{0}{1}'.format(separator, divider_tail)
 
 
 def convert_as_row_format(items, separator='|'):

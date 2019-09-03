@@ -29,7 +29,7 @@ def main():
     contents = retrieve_data_from_github(parser.repo_full_names, default_mapper)
     contents = sort_by(column_names, contents, parser)
 
-    table_format = convert_as_table_format(column_names, contents)
+    table_format = convert_as_table_format(column_names, contents, parser.headless)
 
     print(table_format)
 
