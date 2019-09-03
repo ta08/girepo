@@ -28,9 +28,14 @@ def link_format(url):
     return "[link]({0})".format(url)
 
 
+def fullname_format(owner, name):
+    return "{0}/{1}".format(owner, name)
+
+
 default_mapper = OrderedDict([
-    ('owner', lambda x: x['owner']['login']),
-    ('name', lambda x: x['name']),
+    ('fullname', lambda x: fullname_format(
+        (x['owner']['login']), x['name'])
+     ),
     ('star', lambda x: x['stargazers_count']),
     ('star/day', lambda x: calculate_star_per(
         x['created_at'], x['updated_at'], x['stargazers_count'], day_duration=1)
