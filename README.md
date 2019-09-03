@@ -25,7 +25,7 @@ pip install girepo
 <a id="markdown-usage" name="usage"></a>
 
 ```markdown
-  usage: girepo [-h]
+usage: girepo [-h]
               [-a {owner,name,star,star/day,created_at,updated_at,license,language,description,url} | -d {owner,name,star,star/day,created_at,updated_at,license,language,description,url}]
               repo_full_names [repo_full_names ...]
 
@@ -45,8 +45,8 @@ optional arguments:
   -d {owner,name,star,star/day,created_at,updated_at,license,language,description,url}, --desc {owner,name,star,star/day,created_at,updated_at,license,language,description,url}
                         sort by desc with the field
 
-
 God bless you.
+
 
 ```
 ## Realworld Example
@@ -65,18 +65,19 @@ Output:
 ```markdown
 | owner | name | star | star/day | created_at | updated_at | license | language | description | url |
 | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ |
-| angular | angular | 50555 | 28.05 | 2014-09-18 | 2019-08-25 | MIT License | TypeScript | One framework. Mobile & desktop. | https://github.com/angular/angular |
-| facebook | react | 134973 | 59.1 | 2013-05-24 | 2019-08-25 | MIT License | JavaScript | A declarative, efficient, and flexible JavaScript library for building user interfaces. | https://github.com/facebook/react |
-| vuejs | vue | 146721 | 66.12 | 2013-07-29 | 2019-08-25 | MIT License | JavaScript | 🖖 Vue.js is a progressive, incrementally-adoptable JavaScript framework for building UI on the web. | https://github.com/vuejs/vue |
+| angular | angular | 50978 | 28.15 | 2014-09-18 | 2019-09-03 | MIT License | TypeScript | One framework. Mobile & desktop. | https://github.com/angular/angular |
+| facebook | react | 135433 | 59.06 | 2013-05-24 | 2019-09-03 | MIT License | JavaScript | A declarative, efficient, and flexible JavaScript library for building user interfaces. | https://github.com/facebook/react |
+| vuejs | vue | 147347 | 66.13 | 2013-07-29 | 2019-09-03 | MIT License | JavaScript | 🖖 Vue.js is a progressive, incrementally-adoptable JavaScript framework for building UI on the web. | https://github.com/vuejs/vue |
 ```
 
 Then you can get the table format of markdown.
 
 | owner | name | star | star/day | created_at | updated_at | license | language | description | url |
 | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ |
-| angular | angular | 50555 | 28.05 | 2014-09-18 | 2019-08-25 | MIT License | TypeScript | One framework. Mobile & desktop. | https://github.com/angular/angular |
-| facebook | react | 134973 | 59.1 | 2013-05-24 | 2019-08-25 | MIT License | JavaScript | A declarative, efficient, and flexible JavaScript library for building user interfaces. | https://github.com/facebook/react |
-| vuejs | vue | 146721 | 66.12 | 2013-07-29 | 2019-08-25 | MIT License | JavaScript | 🖖 Vue.js is a progressive, incrementally-adoptable JavaScript framework for building UI on the web. | https://github.com/vuejs/vue |
+| angular | angular | 50978 | 28.15 | 2014-09-18 | 2019-09-03 | MIT License | TypeScript | One framework. Mobile & desktop. | https://github.com/angular/angular |
+| facebook | react | 135433 | 59.06 | 2013-05-24 | 2019-09-03 | MIT License | JavaScript | A declarative, efficient, and flexible JavaScript library for building user interfaces. | https://github.com/facebook/react |
+| vuejs | vue | 147347 | 66.13 | 2013-07-29 | 2019-09-03 | MIT License | JavaScript | 🖖 Vue.js is a progressive, incrementally-adoptable JavaScript framework for building UI on the web. | https://github.com/vuejs/vue |
+
 
 ### Input From File
 <a id="markdown-input-from-file-case" name="input-from-file-case"></a>
@@ -93,17 +94,17 @@ vuejs/vue
 For example, if the file name is ./doc/input.txt, then
 
 ```sh
-girepo @doc/input.txt 
+girepo @misc/input.txt
 ```
 
 Output:
 ```markdown
 | owner | name | star | star/day | created_at | updated_at | license | language | description | url |
 | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ |
-| angular | angular | 50556 | 28.06 | 2014-09-18 | 2019-08-25 | MIT License | TypeScript | One framework. Mobile & desktop. | https://github.com/angular/angular |
-| facebook | react | 134974 | 59.1 | 2013-05-24 | 2019-08-25 | MIT License | JavaScript | A declarative, efficient, and flexible JavaScript library for building user interfaces. | https://github.com/facebook/react |
-| vuetifyjs | vuetify | 21220 | 19.68 | 2016-09-12 | 2019-08-25 | MIT License | TypeScript | 🐉 Material Component Framework for Vue.js 2 | https://github.com/vuetifyjs/vuetify |
-| vuejs | vue | 146723 | 66.12 | 2013-07-29 | 2019-08-25 | MIT License | JavaScript | 🖖 Vue.js is a progressive, incrementally-adoptable JavaScript framework for building UI on the web. | https://github.com/vuejs/vue |
+| angular | angular | 50978 | 28.15 | 2014-09-18 | 2019-09-03 | MIT License | TypeScript | One framework. Mobile & desktop. | https://github.com/angular/angular |
+| facebook | react | 135433 | 59.06 | 2013-05-24 | 2019-09-03 | MIT License | JavaScript | A declarative, efficient, and flexible JavaScript library for building user interfaces. | https://github.com/facebook/react |
+| vuetifyjs | vuetify | 21358 | 19.65 | 2016-09-12 | 2019-09-03 | MIT License | TypeScript | 🐉 Material Component Framework for Vue.js 2 | https://github.com/vuetifyjs/vuetify |
+| vuejs | vue | 147347 | 66.13 | 2013-07-29 | 2019-09-03 | MIT License | JavaScript | 🖖 Vue.js is a progressive, incrementally-adoptable JavaScript framework for building UI on the web. | https://github.com/vuejs/vue |
 ```
 
 
@@ -111,12 +112,12 @@ Output:
 <a id="markdown-whitespace-case" name="whitespace-case"></a>
 when you copy a name of an owner and a repository on a topic page the below, you might get whitespaces between the owner and repository like ` vuetifyjs / vuetify `. So this script enables to parse them. 
 
-![topic_page](docs/screenshot.png)
+![topic_page](misc/screenshot.png)
 
 Please surround the owner/repository name with " if it contains whitespaces. 
 
 ```sh
-girepo " vuetifyjs / vuetify " "kriasoft / react-starter-kit "
+girepo " vuetifyjs / vuetify " "kriasoft / react-starter-kit " 
 ```
 
 Output:
@@ -124,14 +125,13 @@ Output:
 ```markdown
 | owner | name | star | star/day | created_at | updated_at | license | language | description | url |
 | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ |
-| vuetifyjs | vuetify | 21220 | 19.68 | 2016-09-12 | 2019-08-25 | MIT License | TypeScript | 🐉 Material Component Framework for Vue.js 2 | https://github.com/vuetifyjs/vuetify |
-| kriasoft | react-starter-kit | 19457 | 9.94 | 2014-04-16 | 2019-08-25 | MIT License | JavaScript | React Starter Kit — isomorphic web app boilerplate (Node.js, Express, GraphQL, React.js, Babel, PostCSS, Webpack, Browsersync) | https://github.com/kriasoft/react-starter-kit |
+| vuetifyjs | vuetify | 21358 | 19.65 | 2016-09-12 | 2019-09-03 | MIT License | TypeScript | 🐉 Material Component Framework for Vue.js 2 | https://github.com/vuetifyjs/vuetify |
+| kriasoft | react-starter-kit | 19479 | 9.91 | 2014-04-16 | 2019-09-03 | MIT License | JavaScript | React Starter Kit — isomorphic web app boilerplate (Node.js, Express, GraphQL, React.js, Babel, PostCSS, Webpack, Browsersync) | https://github.com/kriasoft/react-starter-kit |
 ```
 
 ### Sort
 <a id="markdown-sort-case" name="sort-case"></a>
 ```sh
 girepo angular/angular facebook/react vuejs/vue  --asc star
-```
-
-
+``` 
+    
