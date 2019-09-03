@@ -24,6 +24,10 @@ def date_format(name):
     return lambda x: x[name].split('T')[0]
 
 
+def link_format(url):
+    return "[link]({0})".format(url)
+
+
 default_mapper = OrderedDict([
     ('owner', lambda x: x['owner']['login']),
     ('name', lambda x: x['name']),
@@ -36,7 +40,7 @@ default_mapper = OrderedDict([
     ('license', lambda x: x['license']['name']),
     ('language', lambda x: x['language']),
     ('description', lambda x: x['description']),
-    ('url', lambda x: x['html_url']),
+    ('url', lambda x: link_format(x['html_url'])),
 ])
 
 
