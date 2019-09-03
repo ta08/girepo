@@ -4,7 +4,7 @@ import logging
 import sys
 
 from girepo.arg_parser import create_argparser
-from girepo.converter import convert_as_table_format
+from girepo.formatter import convert_as_table_format
 from girepo.extractor import extract, default_mapper
 from girepo.fetch import fetch_from
 from girepo.sort import sort_by
