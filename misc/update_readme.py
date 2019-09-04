@@ -40,7 +40,7 @@ This makes it easy to investigate repositories at Github and to describe the res
     - [Simple](#simple)
     - [Input From File](#input-from-file)
     - [Whitespace](#whitespace)
-    - [Sort](#sort)
+    - [etc](#etc)
 
 <!-- /TOC -->
 

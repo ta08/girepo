@@ -11,7 +11,7 @@ This makes it easy to investigate repositories at Github and to describe the res
     - [Simple](#simple)
     - [Input From File](#input-from-file)
     - [Whitespace](#whitespace)
-    - [Sort](#sort)
+    - [etc](#etc)
 
 <!-- /TOC -->
 
@@ -65,19 +65,19 @@ girepo angular/angular facebook/react vuejs/vue
 Output:
 ```markdown
 | fullname | star | star/day | created_at | updated_at | license | language | description | url |
-| ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ |
-| angular/angular | 50,988 | 28.14 | 2014-09-18 | 2019-09-03 | MIT License | TypeScript | One framework. Mobile & desktop. | [link](https://github.com/angular/angular) |
-| facebook/react | 135,443 | 59.04 | 2013-05-24 | 2019-09-03 | MIT License | JavaScript | A declarative, efficient, and flexible JavaScript library for building user interfaces. | [link](https://github.com/facebook/react) |
-| vuejs/vue | 147,354 | 66.14 | 2013-07-29 | 2019-09-03 | MIT License | JavaScript | 🖖 Vue.js is a progressive, incrementally-adoptable JavaScript framework for building UI on the web. | [link](https://github.com/vuejs/vue) |
+| :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: |
+| angular/angular | 51,017 | 28.16 | 2014-09-18 | 2019-09-04 | MIT License | TypeScript | One framework. Mobile & desktop. | [link](https://github.com/angular/angular) |
+| facebook/react | 135,490 | 59.06 | 2013-05-24 | 2019-09-04 | MIT License | JavaScript | A declarative, efficient, and flexible JavaScript library for building user interfaces. | [link](https://github.com/facebook/react) |
+| vuejs/vue | 147,411 | 66.13 | 2013-07-29 | 2019-09-04 | MIT License | JavaScript | 🖖 Vue.js is a progressive, incrementally-adoptable JavaScript framework for building UI on the web. | [link](https://github.com/vuejs/vue) |
 ```
 
 Then you can get the table format of markdown.
 
 | fullname | star | star/day | created_at | updated_at | license | language | description | url |
-| ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ |
-| angular/angular | 50,988 | 28.14 | 2014-09-18 | 2019-09-03 | MIT License | TypeScript | One framework. Mobile & desktop. | [link](https://github.com/angular/angular) |
-| facebook/react | 135,443 | 59.04 | 2013-05-24 | 2019-09-03 | MIT License | JavaScript | A declarative, efficient, and flexible JavaScript library for building user interfaces. | [link](https://github.com/facebook/react) |
-| vuejs/vue | 147,354 | 66.14 | 2013-07-29 | 2019-09-03 | MIT License | JavaScript | 🖖 Vue.js is a progressive, incrementally-adoptable JavaScript framework for building UI on the web. | [link](https://github.com/vuejs/vue) |
+| :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: |
+| angular/angular | 51,017 | 28.16 | 2014-09-18 | 2019-09-04 | MIT License | TypeScript | One framework. Mobile & desktop. | [link](https://github.com/angular/angular) |
+| facebook/react | 135,490 | 59.06 | 2013-05-24 | 2019-09-04 | MIT License | JavaScript | A declarative, efficient, and flexible JavaScript library for building user interfaces. | [link](https://github.com/facebook/react) |
+| vuejs/vue | 147,411 | 66.13 | 2013-07-29 | 2019-09-04 | MIT License | JavaScript | 🖖 Vue.js is a progressive, incrementally-adoptable JavaScript framework for building UI on the web. | [link](https://github.com/vuejs/vue) |
 
 
 ### Input From File
@@ -101,11 +101,11 @@ girepo @misc/input.txt
 Output:
 ```markdown
 | fullname | star | star/day | created_at | updated_at | license | language | description | url |
-| ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ |
-| angular/angular | 50,988 | 28.14 | 2014-09-18 | 2019-09-03 | MIT License | TypeScript | One framework. Mobile & desktop. | [link](https://github.com/angular/angular) |
-| facebook/react | 135,443 | 59.04 | 2013-05-24 | 2019-09-03 | MIT License | JavaScript | A declarative, efficient, and flexible JavaScript library for building user interfaces. | [link](https://github.com/facebook/react) |
-| vuetifyjs/vuetify | 21,359 | 19.65 | 2016-09-12 | 2019-09-03 | MIT License | TypeScript | 🐉 Material Component Framework for Vue.js 2 | [link](https://github.com/vuetifyjs/vuetify) |
-| vuejs/vue | 147,354 | 66.14 | 2013-07-29 | 2019-09-03 | MIT License | JavaScript | 🖖 Vue.js is a progressive, incrementally-adoptable JavaScript framework for building UI on the web. | [link](https://github.com/vuejs/vue) |
+| :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: |
+| angular/angular | 51,017 | 28.16 | 2014-09-18 | 2019-09-04 | MIT License | TypeScript | One framework. Mobile & desktop. | [link](https://github.com/angular/angular) |
+| facebook/react | 135,490 | 59.06 | 2013-05-24 | 2019-09-04 | MIT License | JavaScript | A declarative, efficient, and flexible JavaScript library for building user interfaces. | [link](https://github.com/facebook/react) |
+| vuetifyjs/vuetify | 21,372 | 19.64 | 2016-09-12 | 2019-09-04 | MIT License | TypeScript | 🐉 Material Component Framework for Vue.js 2 | [link](https://github.com/vuetifyjs/vuetify) |
+| vuejs/vue | 147,411 | 66.13 | 2013-07-29 | 2019-09-04 | MIT License | JavaScript | 🖖 Vue.js is a progressive, incrementally-adoptable JavaScript framework for building UI on the web. | [link](https://github.com/vuejs/vue) |
 ```
 
 
@@ -125,9 +125,9 @@ Output:
 
 ```markdown
 | fullname | star | star/day | created_at | updated_at | license | language | description | url |
-| ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ |
-| vuetifyjs/vuetify | 21,359 | 19.65 | 2016-09-12 | 2019-09-03 | MIT License | TypeScript | 🐉 Material Component Framework for Vue.js 2 | [link](https://github.com/vuetifyjs/vuetify) |
-| kriasoft/react-starter-kit | 19,478 | 9.9 | 2014-04-16 | 2019-09-03 | MIT License | JavaScript | React Starter Kit — isomorphic web app boilerplate (Node.js, Express, GraphQL, React.js, Babel, PostCSS, Webpack, Browsersync) | [link](https://github.com/kriasoft/react-starter-kit) |
+| :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: |
+| vuetifyjs/vuetify | 21,372 | 19.64 | 2016-09-12 | 2019-09-04 | MIT License | TypeScript | 🐉 Material Component Framework for Vue.js 2 | [link](https://github.com/vuetifyjs/vuetify) |
+| kriasoft/react-starter-kit | 19,480 | 9.9 | 2014-04-16 | 2019-09-04 | MIT License | JavaScript | React Starter Kit — isomorphic web app boilerplate (Node.js, Express, GraphQL, React.js, Babel, PostCSS, Webpack, Browsersync) | [link](https://github.com/kriasoft/react-starter-kit) |
 ```
 
 ### etc

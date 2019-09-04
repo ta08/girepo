@@ -15,7 +15,7 @@ def convert_as_table_format(column_names, contents, is_headless=False, line_sepa
 
 
 def prepare_divider(separator, times):
-    divider_tail = ' ------ {0}'.format(separator) * times
+    divider_tail = ' :----: {0}'.format(separator) * times
     return '{0}{1}'.format(separator, divider_tail)
 
 
