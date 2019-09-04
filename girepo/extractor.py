@@ -20,23 +20,36 @@ def calculate_star_per(created_at, updated_at, star_count, day_duration=1, round
     return day_duration * round(star_count / (delta.days + offset_for_zero_division), round_n)
 
 
-def date_format(name):
-    return lambda x: x[name].split('T')[0]
+def date_format(date_str):
+    return date_str.split('T')[0]
+
+
+def link_format(url):
+    return "[link]({0})".format(url)
+
+
+def fullname_format(owner, name):
+    return "{0}/{1}".format(owner, name)
+
+
+def readable_number(n):
+    return "{:,}".format(n)
 
 
 default_mapper = OrderedDict([
-    ('owner', lambda x: x['owner']['login']),
-    ('name', lambda x: x['name']),
-    ('star', lambda x: x['stargazers_count']),
+    ('fullname', lambda x: fullname_format(
+        (x['owner']['login']), x['name'])
+     ),
+    ('star', lambda x: readable_number(x['stargazers_count'])),
     ('star/day', lambda x: calculate_star_per(
         x['created_at'], x['updated_at'], x['stargazers_count'], day_duration=1)
      ),
-    ('created_at', date_format('created_at')),
-    ('updated_at', date_format('updated_at')),
+    ('created_at', lambda x: date_format(x['created_at'])),
+    ('updated_at', lambda x: date_format(x['updated_at'])),
     ('license', lambda x: x['license']['name']),
     ('language', lambda x: x['language']),
     ('description', lambda x: x['description']),
-    ('url', lambda x: x['html_url']),
+    ('url', lambda x: link_format(x['html_url'])),
 ])
 
 
