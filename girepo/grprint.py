@@ -3,7 +3,7 @@
 import logging
 import sys
 
-from girepo.arg_parser import create_argparser
+from girepo.arg_parser import create_argparser, SubParser
 from girepo.formatter import convert_as_table_format
 from girepo.extractor import extract, default_mapper
 from girepo.fetch import fetch_at, search_in_order_of_star
@@ -37,23 +37,15 @@ def retrieve_data_heuristic(repo_names, mapper):
     return contents
 
 
-def strict_main():
+def main():
     column_names = list(default_mapper.keys())
     parser = create_argparser(sys.argv[1:], column_names)
 
-    contents = retrieve_data_directly(parser.repo_full_names, default_mapper)
-    contents = sort_by(column_names, contents, parser)
+    if parser.sub_parser_name is SubParser.STRICT.value:
+        contents = retrieve_data_directly(parser.names, default_mapper)
+    else:
+        contents = retrieve_data_heuristic(parser.names, default_mapper)
 
-    table_format = convert_as_table_format(column_names, contents, parser.headless)
-
-    print(table_format)
-
-
-def heuristic_main():
-    column_names = list(default_mapper.keys())
-    parser = create_argparser(sys.argv[1:], column_names)
-    parser.repo_full_names = ['request', "angular"]
-    contents = retrieve_data_heuristic(parser.repo_full_names, default_mapper)
     contents = sort_by(column_names, contents, parser)
 
     table_format = convert_as_table_format(column_names, contents, parser.headless)
@@ -62,4 +54,4 @@ def heuristic_main():
 
 
 if __name__ == '__main__':
-    strict_main()
+    main()
