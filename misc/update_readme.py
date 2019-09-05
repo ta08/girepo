@@ -57,10 +57,6 @@ pip install girepo
 ## Usage
 <a id="markdown-usage" name="usage"></a>
 
-```
-{girepo_help}
-```
-
 ```markdown
 {girepo_dic[girepo_help]}
 

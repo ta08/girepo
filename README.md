@@ -26,10 +26,6 @@ pip install girepo
 ## Usage
 <a id="markdown-usage" name="usage"></a>
 
-```
-girepo --help
-```
-
 ```markdown
 usage: girepo [-h] {rough,ro,strict,st} ...
 
