@@ -2,8 +2,8 @@ version: 2
 jobs:
   build:
     docker:
-      - image: python:3.5
-    working_directory: ~/girepo-test
+      - image: python:3.7
+    working_directory: ~/repo
     steps:
       - checkout
       - run:
@@ -14,16 +14,24 @@ jobs:
           command: |
             python -m venv venv || virtualenv venv
             . venv/bin/activate
+            pip install --upgrade pip
             pip install -r requirements.txt
-      - run:
-          name: Install girepo locally
-          command: pip install -U .
+            pip install -U .
       - run:
           name: girepo help
-          command: girepo --help
+          command: |
+            . venv/bin/activate
+            girepo --help
       - run:
           name: girepo rough
-          command: girepo rough angular react vue
+          command: |
+            . venv/bin/activate
+            girepo rough angular react vue
       - run:
           name: girepo strict
-          command: girepo strict angular/angular facebook/react vuejs/vue --headless --desc star
+          command: |
+            . venv/bin/activate
+            girepo strict angular/angular facebook/react vuejs/vue --headless --desc star
+      - store_artifacts:
+          path: test-reports
+          destination: test-reports
