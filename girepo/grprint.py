@@ -6,7 +6,7 @@ import sys
 from girepo.arg_parser import create_argparser, SubParser
 from girepo.formatter import convert_as_table_format
 from girepo.extractor import extract, default_mapper
-from girepo.fetch import fetch_at, search_in_order_of_star
+from girepo.fetch import fetch_at, search
 from girepo.sort import sort_by
 
 
@@ -30,7 +30,7 @@ def add_retrieved_data(contents, repo_json, mapper, status_code):
 def retrieve_data_heuristic(repo_names, mapper):
     contents = []
     for repo_name in repo_names:
-        status_code, json = search_in_order_of_star(repo_name)
+        status_code, json = search(repo_name)
         if json.get("items") and len(json.get("items")) > 0:
             add_retrieved_data(contents, json['items'][0], mapper, status_code)
 
