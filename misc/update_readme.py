@@ -38,9 +38,9 @@ This makes it easy to investigate repositories at Github and to describe the res
 
 - [Installation](#installation)
 - [Usage](#usage)
-- [Realworld Example](#realworld-example)
-    - [Simple (ver. strict)](#simple-ver-strict)
+- [Example](#example)
     - [Simple (ver. rough)](#simple-ver-rough)
+    - [Simple (ver. strict)](#simple-ver-strict)
     - [Input From File](#input-from-file)
     - [Whitespace](#whitespace)
     - [etc](#etc)
@@ -61,30 +61,12 @@ pip install girepo
 {girepo_help}
 ```
 
-
 ```markdown
 {girepo_dic[girepo_help]}
 
 ```
-## Realworld Example
-<a id="markdown-realworld-example" name="realworld-example"></a>
-
-### Simple (ver. strict)
-<a id="markdown-simple-ver-strict" name="simple-ver-strict"></a>
-
-If you want to investigate repositories of frontend framework, you can run this script like below.
-
-```sh
-{girepo_simple} 
-```
-
-Output:
-```markdown
-{girepo_dic[girepo_simple]}```
-
-Then you can get the table format of markdown.
-
-{girepo_dic[girepo_simple]}
+## Example
+<a id="markdown-example" name="example"></a>
 
 ### Simple (ver. rough)
 <a id="markdown-simple-ver-rough" name="simple-ver-rough"></a>
@@ -102,6 +84,27 @@ Output:
 Then you can get the table format of markdown.
 
 {girepo_dic[girepo_rough_simple]}
+
+This results are heuristic so if you find wrong rows,
+ I recommend to use strict sub-command with the fullname and a headless option. 
+
+
+### Simple (ver. strict)
+<a id="markdown-simple-ver-strict" name="simple-ver-strict"></a>
+
+If you want to investigate repositories of frontend framework, you can run this script like below.
+
+```sh
+{girepo_simple} 
+```
+
+Output:
+```markdown
+{girepo_dic[girepo_simple]}```
+
+Then you can get the table format of markdown.
+
+{girepo_dic[girepo_simple]}
 
 
 ### Input From File
