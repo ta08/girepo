@@ -51,7 +51,7 @@ def create_argparser(args, sort_keys):
     subparser_heuristic = subparsers.add_parser(SubParser.ROUGH.value,
                                                 description="This is a heuristic search.\
                                                  This is possible to return the wrong repository info.",
-                                                aliases=["ro"], help='heuristic search')
+                                                aliases=["ro"], help='heuristic search. see `girepo ro --help`')
     subparser_heuristic.add_argument('names', nargs='+',
                                      help='the target repositories')
     add_options(subparser_heuristic, sort_keys)
@@ -60,7 +60,7 @@ def create_argparser(args, sort_keys):
     subparser_strict = subparsers.add_parser(SubParser.STRICT.value,
                                              description="This is a strict search.\
                                                This requires owner and repository name as \"onwer/repository\".",
-                                             aliases=["st"], help='strict search')
+                                             aliases=["st"], help='strict search. see `girepo st --help`')
     subparser_strict.add_argument('names', type=full_name_type, nargs='+',
                                   help='the target repositories written like owner/repository')
     add_options(subparser_strict, sort_keys)
