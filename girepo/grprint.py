@@ -41,7 +41,7 @@ def main():
     column_names = list(default_mapper.keys())
     parser = create_argparser(sys.argv[1:], column_names)
 
-    if parser.sub_parser_name is SubParser.STRICT.value:
+    if parser.sub_parser_name == SubParser.STRICT.value:
         contents = retrieve_data_directly(parser.names, default_mapper)
     else:
         contents = retrieve_data_heuristic(parser.names, default_mapper)

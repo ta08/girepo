@@ -85,8 +85,8 @@ Then you can get the table format of markdown.
 
 {girepo_dic[girepo_rough_simple]}
 
-This results are heuristic so if you find wrong rows,
- I recommend to use strict sub-command with the fullname and a headless option. 
+This results are heuristic so if you find wrong repositories,
+ I recommend to use strict sub-command with proper fullnames and the headless option. 
 
 
 ### Simple (ver. strict)
@@ -135,7 +135,7 @@ Output:
 
 when you copy a name of an owner and a repository on a topic page the below, you might get whitespaces between the owner and repository like ` vuetifyjs / vuetify `. So this script enables to parse them. 
 
-![topic_page](misc/screenshot.png)
+![topic_page_image](misc/screenshot.png)
 
 Please surround the owner/repository name with " if it contains whitespaces. 
 

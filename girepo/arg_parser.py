@@ -43,8 +43,8 @@ def create_argparser(args, sort_keys):
 
     subparsers = parser.add_subparsers(
         title='subcommands',
-        description="you can choose a search way from sub commands.\
-         rough sub command does not require owner info but it might return wrong info.",
+        description="you can choose a search way from sub-commands.\
+         rough sub-command does not require owner info but it might return wrong info.",
         dest='sub_parser_name', )
 
     # rough
