@@ -32,21 +32,21 @@ def fullname_format(owner, name):
     return "{0}/{1}".format(owner, name)
 
 
-def readable_number(n):
-    return "{:,}".format(n)
+def to_license_name(license_obj):
+    return license_obj['name'] if license_obj else "Unknown, see Homepage"
 
 
 default_mapper = OrderedDict([
     ('fullname', lambda x: fullname_format(
         (x['owner']['login']), x['name'])
      ),
-    ('star', lambda x: readable_number(x['stargazers_count'])),
+    ('star', lambda x: x['stargazers_count']),
     ('star/day', lambda x: calculate_star_per(
         x['created_at'], x['updated_at'], x['stargazers_count'], day_duration=1)
      ),
     ('created_at', lambda x: date_format(x['created_at'])),
     ('updated_at', lambda x: date_format(x['updated_at'])),
-    ('license', lambda x: x['license']['name']),
+    ('license', lambda x: to_license_name(x['license'])),
     ('language', lambda x: x['language']),
     ('description', lambda x: x['description']),
     ('url', lambda x: link_format(x['html_url'])),

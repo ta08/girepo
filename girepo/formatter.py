@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+import numbers
+
 
 def convert_as_table_format(column_names, contents, is_headless=False, line_separator='\n', separator='|'):
     accumulation = []
@@ -20,8 +22,12 @@ def prepare_divider(separator, times):
 
 
 def convert_as_row_format(items, separator='|'):
-    escaped_separator = '\{0}'.format(separator)
     margin_separator = ' {0} '.format(separator)
-    body = margin_separator.join(str(item).replace(separator, escaped_separator) for item in items)
+    body = margin_separator.join(beautify_cell(item, separator) for item in items)
     res = "{0} {1} {2}".format(separator, body, separator)
     return res
+
+
+def beautify_cell(item, separator):
+    escaped_separator = '\{0}'.format(separator)
+    return "{:,}".format(item) if isinstance(item, numbers.Number) else item.replace(separator, escaped_separator)

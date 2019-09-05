@@ -3,6 +3,13 @@
 import re
 import argparse
 
+from enum import Enum
+
+
+class SubParser(Enum):
+    STRICT = "strict"
+    ROUGH = "rough"
+
 
 def full_name_type(value, pattern=re.compile(r"^(( )*[\w\.\-]+( )*/( )*[\w\.\-]+( )*)$")):
     """
@@ -33,8 +40,35 @@ def create_argparser(args, sort_keys):
         epilog="God bless you.",
         fromfile_prefix_chars="@"
     )
-    parser.add_argument('repo_full_names', type=full_name_type, nargs='+',
-                        help='the target repositories written like owner/repository')
+
+    subparsers = parser.add_subparsers(
+        title='subcommands',
+        description="you can choose a search way from sub-commands.\
+         rough sub-command does not require owner info but it might return wrong info.",
+        dest='sub_parser_name', )
+
+    # rough
+    subparser_heuristic = subparsers.add_parser(SubParser.ROUGH.value,
+                                                description="This is a heuristic search.\
+                                                 This is possible to return the wrong repository info.",
+                                                aliases=["ro"], help='heuristic search. see `girepo ro --help`')
+    subparser_heuristic.add_argument('names', nargs='+',
+                                     help='the target repositories')
+    add_options(subparser_heuristic, sort_keys)
+
+    # strict
+    subparser_strict = subparsers.add_parser(SubParser.STRICT.value,
+                                             description="This is a strict search.\
+                                               This requires owner and repository name as \"onwer/repository\".",
+                                             aliases=["st"], help='strict search. see `girepo st --help`')
+    subparser_strict.add_argument('names', type=full_name_type, nargs='+',
+                                  help='the target repositories written like owner/repository')
+    add_options(subparser_strict, sort_keys)
+
+    return parser.parse_args(args)
+
+
+def add_options(parser, sort_keys):
     parser.add_argument('--headless', dest="headless", action='store_true',
                         help='not to describe table headers')
 
@@ -43,5 +77,3 @@ def create_argparser(args, sort_keys):
                        help='sort by asc with the field')
     group.add_argument('-d', '--desc', dest="desc_key", choices=sort_keys,
                        help='sort by desc with the field')
-
-    return parser.parse_args(args)

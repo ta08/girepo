@@ -10,13 +10,15 @@ def exec_command(command_text):
 
 if __name__ == '__main__':
     girepo_help = "girepo --help"
-    girepo_simple = "girepo angular/angular facebook/react vuejs/vue"
-    girepo_file = "girepo @misc/input.txt"
-    gireop_space = r"""girepo " vuetifyjs / vuetify " "kriasoft / react-starter-kit " """
+    girepo_simple = "girepo strict angular/angular facebook/react vuejs/vue"
+    girepo_rough_simple = "girepo rough angular react vue"
+    girepo_file = "girepo strict @misc/input.txt"
+    gireop_space = r"""girepo strict " vuetifyjs / vuetify " "kriasoft / react-starter-kit " """
 
     commands = [
         girepo_help,
         girepo_simple,
+        girepo_rough_simple,
         girepo_file,
         gireop_space
     ]
@@ -36,8 +38,9 @@ This makes it easy to investigate repositories at Github and to describe the res
 
 - [Installation](#installation)
 - [Usage](#usage)
-- [Realworld Example](#realworld-example)
-    - [Simple](#simple)
+- [Example](#example)
+    - [Simple (ver. rough)](#simple-ver-rough)
+    - [Simple (ver. strict)](#simple-ver-strict)
     - [Input From File](#input-from-file)
     - [Whitespace](#whitespace)
     - [etc](#etc)
@@ -45,6 +48,7 @@ This makes it easy to investigate repositories at Github and to describe the res
 <!-- /TOC -->
 
 ## Installation
+<a id="markdown-installation" name="installation"></a>
 
 ```
 pip install girepo
@@ -57,16 +61,37 @@ pip install girepo
 {girepo_dic[girepo_help]}
 
 ```
-## Realworld Example
-<a id="markdown-realworld-example" name="realworld-example"></a>
+## Example
+<a id="markdown-example" name="example"></a>
 
-### Simple
-<a id="markdown-simple-case" name="simple-case"></a>
+### Simple (ver. rough)
+<a id="markdown-simple-ver-rough" name="simple-ver-rough"></a>
 
 If you want to investigate repositories of frontend framework, you can run this script like below.
 
 ```sh
-girepo angular/angular facebook/react vuejs/vue 
+{girepo_rough_simple}
+```
+
+Output:
+```markdown
+{girepo_dic[girepo_rough_simple]}```
+
+Then you can get the table format of markdown.
+
+{girepo_dic[girepo_rough_simple]}
+
+This results are heuristic so if you find wrong repositories,
+ I recommend to use strict sub-command with proper fullnames and the headless option. 
+
+
+### Simple (ver. strict)
+<a id="markdown-simple-ver-strict" name="simple-ver-strict"></a>
+
+If you want to investigate repositories of frontend framework, you can run this script like below.
+
+```sh
+{girepo_simple} 
 ```
 
 Output:
@@ -77,8 +102,9 @@ Then you can get the table format of markdown.
 
 {girepo_dic[girepo_simple]}
 
+
 ### Input From File
-<a id="markdown-input-from-file-case" name="input-from-file-case"></a>
+<a id="markdown-input-from-file" name="input-from-file"></a>
 
 If you want to use a bulk input, please prepare a file whose content is like below. Do not contain a blank line.
 
@@ -101,10 +127,11 @@ Output:
 
 
 ### Whitespace
-<a id="markdown-whitespace-case" name="whitespace-case"></a>
+<a id="markdown-whitespace" name="simple-whitespace"></a>
+
 when you copy a name of an owner and a repository on a topic page the below, you might get whitespaces between the owner and repository like ` vuetifyjs / vuetify `. So this script enables to parse them. 
 
-![topic_page](misc/screenshot.png)
+![topic_page_image](misc/screenshot.png)
 
 Please surround the owner/repository name with " if it contains whitespaces. 
 
@@ -119,9 +146,15 @@ Output:
 
 ### etc
 <a id="markdown-etc" name="etc"></a>
+
 ```sh
-girepo angular/angular facebook/react vuejs/vue  --asc star
-``` 
-    """
+girepo strict angular/angular facebook/react vuejs/vue  --asc star
+```
+
+```sh
+girepo rough angular react vue  --headless
+```
+
+"""
 
     print(text)
