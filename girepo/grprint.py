@@ -3,7 +3,7 @@
 import logging
 import sys
 
-from girepo.arg_parser import create_argparser, SubParser
+from girepo.arg_parser import create_argparser, is_strict_command, is_rough_command
 from girepo.formatter import convert_as_table_format
 from girepo.extractor import extract, default_mapper
 from girepo.fetch import fetch_at, search
@@ -41,10 +41,12 @@ def main():
     column_names = list(default_mapper.keys())
     parser = create_argparser(sys.argv[1:], column_names)
 
-    if parser.command_name == SubParser.STRICT.value:
+    if is_strict_command(parser):
         contents = retrieve_data_directly(parser.names, default_mapper)
-    else:
+    elif is_rough_command(parser):
         contents = retrieve_data_heuristic(parser.names, default_mapper)
+    else:
+        sys.exit("missing a sub-command. see the usage `girepo --help`")
 
     contents = sort_by(column_names, contents, parser)
 
