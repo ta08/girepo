@@ -1,5 +1,7 @@
-# girepo
+# girepo 
 <a id="markdown-girepo" name="girepo"></a>
+[![pypi version](https://img.shields.io/pypi/v/girepo.svg?style=flat)](https://pypi.org/project/girepo/)
+[![CircleCI Status](https://circleci.com/gh/ta08/girepo.svg?style=shield)](https://circleci.com/gh/ta08/girepo)
 
 This makes it easy to investigate repositories at Github and to describe the results as a markdown table format. 
 
