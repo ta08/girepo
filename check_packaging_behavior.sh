@@ -30,7 +30,7 @@ log "distributions check, normal log removed"
 
 python setup.py sdist bdist_wheel >/dev/null
 
-version=$(cat girepo/__init__.py | grep version | sed -E 's/.*([0-9]+\.[0-9]+\.[0-9]+).*/\1/g')
+version=$(grep version girepo/__init__.py | sed -E 's/.*([0-9]+\.[0-9]+\.[0-9]+).*/\1/g')
 
 log "contents of tar gz"
 tar ztfv dist/girepo-${version}.tar.gz
