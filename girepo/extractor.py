@@ -13,9 +13,7 @@ def calculate_star_per(created_at, updated_at, star_count, day_duration=1, round
     :param round_n:
     :return:  day_duration * start / (days + 1)
     """
-    created_at_tz = created_at.replace('Z', '+00:00')
-    updated_at_tz = updated_at.replace('Z', '+00:00')
-    delta = datetime.fromisoformat(updated_at_tz) - datetime.fromisoformat(created_at_tz)
+    delta = datetime.strptime(updated_at, "%Y-%m-%dT%H:%M:%SZ") - datetime.strptime(created_at, "%Y-%m-%dT%H:%M:%SZ")
     offset_for_zero_division = 1
     return day_duration * round(star_count / (delta.days + offset_for_zero_division), round_n)
 
