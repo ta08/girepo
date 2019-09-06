@@ -20,7 +20,7 @@ def retrieve_data_directly(repo_full_names, mapper):
 
 
 def add_retrieved_data(contents, repo_json, mapper, status_code):
-    if status_code is 200:
+    if status_code == 200:
         content = extract(repo_json, mapper)
         contents.append(content)
     else:
@@ -31,7 +31,7 @@ def retrieve_data_heuristic(repo_names, mapper):
     contents = []
     for repo_name in repo_names:
         status_code, json = search(repo_name)
-        if json.get("items") and len(json.get("items")) > 0:
+        if json.get("items"):
             add_retrieved_data(contents, json['items'][0], mapper, status_code)
 
     return contents
@@ -41,7 +41,7 @@ def main():
     column_names = list(default_mapper.keys())
     parser = create_argparser(sys.argv[1:], column_names)
 
-    if parser.sub_parser_name == SubParser.STRICT.value:
+    if parser.command_name == SubParser.STRICT.value:
         contents = retrieve_data_directly(parser.names, default_mapper)
     else:
         contents = retrieve_data_heuristic(parser.names, default_mapper)
