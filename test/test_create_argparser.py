@@ -7,37 +7,37 @@ class TestCreateArgparser(TestCase):
     def test_create_argparser_without_argument_error(self):
         test_data = [
             ({
-                 "args": ["angular/angular", "facebook/react", "vuejs/vue"],
+                 "args": ["strict", "angular/angular", "facebook/react", "vuejs/vue"],
                  "sort_keys": ["star", "created_at"],
                  "expected": {
-                     "repo_full_names": ["angular/angular", "facebook/react", "vuejs/vue"],
+                     "names": ["angular/angular", "facebook/react", "vuejs/vue"],
                      "asc_key": None,
                      "desc_key": None,
                  }
              }, "normal arguments without sort option"),
             ({
-                 "args": ["angular/   angular", "facebook   /react", "  vuejs  /  vue  "],
+                 "args": ["strict", "angular/   angular", "facebook   /react", "  vuejs  /  vue  "],
                  "sort_keys": ["star", "created_at"],
                  "expected": {
-                     "repo_full_names": ["angular/angular", "facebook/react", "vuejs/vue"],
+                     "names": ["angular/angular", "facebook/react", "vuejs/vue"],
                      "asc_key": None,
                      "desc_key": None,
                  }
              }, "arguments which have spaces without sort option"),
             ({
-                 "args": ["angular/  angular", "facebook  /react", " vuejs / vue ", "--asc", "star"],
+                 "args": ["strict", "angular/  angular", "facebook  /react", " vuejs / vue ", "--asc", "star"],
                  "sort_keys": ["star", "created_at"],
                  "expected": {
-                     "repo_full_names": ["angular/angular", "facebook/react", "vuejs/vue"],
+                     "names": ["angular/angular", "facebook/react", "vuejs/vue"],
                      "asc_key": "star",
                      "desc_key": None,
                  }
              }, "normal arguments with asc option"),
             ({
-                 "args": ["angular/  angular", "facebook  /react", " vuejs / vue ", "--desc", "star"],
+                 "args": ["strict", "angular/  angular", "facebook  /react", " vuejs / vue ", "--desc", "star"],
                  "sort_keys": ["star", "created_at"],
                  "expected": {
-                     "repo_full_names": ["angular/angular", "facebook/react", "vuejs/vue"],
+                     "names": ["angular/angular", "facebook/react", "vuejs/vue"],
                      "asc_key": None,
                      "desc_key": "star",
                  }
@@ -49,14 +49,14 @@ class TestCreateArgparser(TestCase):
         for data, message in test_data:
             with self.subTest(message):
                 actual = create_argparser(data['args'], data['sort_keys'])
-                self.assertEqual(data['expected']['repo_full_names'], actual.repo_full_names)
+                self.assertEqual(data['expected']['names'], actual.names)
                 self.assertEqual(data['expected']['asc_key'], actual.asc_key)
                 self.assertEqual(data['expected']['desc_key'], actual.desc_key)
 
     def test_create_argparser_with_argument_error(self):
         test_data = [
             ({
-                "args": ["angular/  angular", "--sort"],
+                "args": ["strict", "angular/  angular", "--sort"],
                 "sort_keys": ["star", "created_at"],
                 "expected": {
                     "full_names": ["angular/angular", "facebook/react", "vuejs/vue"],
@@ -66,7 +66,7 @@ class TestCreateArgparser(TestCase):
                 }
             }, "There is no such option like sort"),
             ({
-                "args": ["angular/  angular", "facebook  /react", " vuejs / vue ", "-a"],
+                "args": ["strict", "angular/  angular", "facebook  /react", " vuejs / vue ", "-a"],
                 "sort_keys": ["star", "created_at"],
                 "expected": {
                     "full_names": ["angular/angular", "facebook/react", "vuejs/vue"],

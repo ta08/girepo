@@ -32,6 +32,12 @@ jobs:
           command: |
             . venv/bin/activate
             girepo strict angular/angular facebook/react vuejs/vue --headless --desc star
-      - store_artifacts:
+      - run:
+          name: girepo test
+          command: |
+            . venv/bin/activate
+            pip install pytest
+            mkdir test-reports
+            pytest --junitxml=test-reports/result.xml
+      - store_test_results:
           path: test-reports
-          destination: test-reports
