@@ -8,7 +8,17 @@ from enum import Enum
 
 class SubParser(Enum):
     STRICT = "strict"
+    ST = "st"
     ROUGH = "rough"
+    RO = "ro"
+
+
+def is_strict_command(parser):
+    return parser.command_name == SubParser.STRICT.value or parser.command_name == SubParser.ST.value
+
+
+def is_rough_command(parser):
+    return parser.command_name == SubParser.ROUGH.value or parser.command_name == SubParser.RO.value
 
 
 def full_name_type(value, pattern=re.compile(r"^(( )*[\w\.\-]+( )*/( )*[\w\.\-]+( )*)$")):
@@ -46,13 +56,14 @@ def create_argparser(args, sort_keys):
         description="you can choose a search way from sub-commands.\
          rough sub-command does not require owner info but it might return wrong info.",
         dest='command_name',
-        required=True)
+    )
 
     # rough
     subparser_heuristic = subparsers.add_parser(SubParser.ROUGH.value,
                                                 description="This is a heuristic search.\
                                                  This is possible to return the wrong repository info.",
-                                                aliases=["ro"], help='heuristic search. see `girepo ro --help`')
+                                                aliases=[SubParser.RO.value],
+                                                help='heuristic search. see `girepo ro --help`')
     subparser_heuristic.add_argument('names', nargs='+',
                                      help='the target repositories')
     add_options(subparser_heuristic, sort_keys)
@@ -61,7 +72,7 @@ def create_argparser(args, sort_keys):
     subparser_strict = subparsers.add_parser(SubParser.STRICT.value,
                                              description="This is a strict search.\
                                                This requires owner and repository name as \"onwer/repository\".",
-                                             aliases=["st"], help='strict search. see `girepo st --help`')
+                                             aliases=[SubParser.ST.value], help='strict search. see `girepo st --help`')
     subparser_strict.add_argument('names', type=full_name_type, nargs='+',
                                   help='the target repositories written like owner/repository')
     add_options(subparser_strict, sort_keys)
