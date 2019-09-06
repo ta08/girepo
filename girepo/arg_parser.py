@@ -46,7 +46,7 @@ def create_argparser(args, sort_keys):
         description="you can choose a search way from sub-commands.\
          rough sub-command does not require owner info but it might return wrong info.",
         dest='command_name',
-        required=True)
+        )
 
     # rough
     subparser_heuristic = subparsers.add_parser(SubParser.ROUGH.value,
