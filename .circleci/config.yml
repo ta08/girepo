@@ -16,28 +16,76 @@ jobs:
             . venv/bin/activate
             pip install --upgrade pip
             pip install -r requirements.txt
-            pip install -U .
-      - run:
-          name: girepo help
-          command: |
-            . venv/bin/activate
-            girepo --help
-      - run:
-          name: girepo rough
-          command: |
-            . venv/bin/activate
-            girepo rough angular react vue
-      - run:
-          name: girepo strict
-          command: |
-            . venv/bin/activate
-            girepo strict angular/angular facebook/react vuejs/vue --headless --desc star
+            pip install wheel
+            python setup.py sdist bdist_wheel
       - run:
           name: girepo test
           command: |
             . venv/bin/activate
             pip install pytest
+            pip install -U .
             mkdir test-reports
             pytest --junitxml=test-reports/result.xml
       - store_test_results:
           path: test-reports
+          destination: test-reports
+      - persist_to_workspace:
+          root: .
+          paths:
+            - dist
+
+  test_cmd_on_python37:
+    working_directory: ~/workspace
+    docker:
+      - image: python:3.7
+    steps:
+      - attach_workspace:
+          at: .
+      - run:
+          name: install girepo
+          command: |
+            pip install dist/girepo-*-py3-none-any.whl
+      - run:
+          name: girepo help
+          command: girepo --help
+      - run:
+          name: girepo rough
+          command: girepo rough angular react vue
+      - run:
+          name: girepo strict
+          command: girepo strict angular/angular facebook/react vuejs/vue --headless --desc star
+
+  test_cmd_on_python35:
+    working_directory: ~/workspace
+    docker:
+      - image: python:3.5
+    steps:
+      - attach_workspace:
+          at: .
+      - run:
+          name: install girepo
+          command: |
+            pip install dist/girepo-*-py3-none-any.whl
+            girepo --help
+      - run:
+          name: girepo help
+          command: girepo --help
+      - run:
+          name: girepo rough
+          command: girepo rough angular react vue
+      - run:
+          name: girepo strict
+          command: girepo strict angular/angular facebook/react vuejs/vue --headless --desc star
+
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      - test_cmd_on_python37:
+          requires:
+            - build
+      - test_cmd_on_python35:
+          requires:
+            - build
