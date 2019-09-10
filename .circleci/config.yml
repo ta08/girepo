@@ -58,7 +58,7 @@ jobs:
   test_cmd_on_python35:
     working_directory: ~/workspace
     docker:
-      - image: python3.5
+      - image: python3.5.7
     steps:
       - attach_workspace:
           at: .
