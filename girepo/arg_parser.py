@@ -21,7 +21,7 @@ def is_rough_command(parser):
     return parser.command_name == SubParser.ROUGH.value or parser.command_name == SubParser.RO.value
 
 
-def full_name_type(value, pattern=re.compile(r"^(( )*[\w\.\-]+( )*/( )*[\w\.\-]+( )*)$")):
+def full_name_type(value, pattern=re.compile(r"^(( )*[\w.\-]+( )*/( )*[\w.\-]+( )*)$")):
     """
     allow the value contains white-space at around words
 
@@ -51,7 +51,7 @@ def create_argparser(args, sort_keys):
         fromfile_prefix_chars="@"
     )
 
-    subparsers = parser.add_subparsers(
+    subparsers_action = parser.add_subparsers(
         title='subcommands',
         description="you can choose a search way from sub-commands.\
          rough sub-command does not require owner info but it might return wrong info.",
@@ -59,28 +59,39 @@ def create_argparser(args, sort_keys):
     )
 
     # rough
-    subparser_heuristic = subparsers.add_parser(SubParser.ROUGH.value,
-                                                description="This is a heuristic search.\
-                                                 This is possible to return the wrong repository info.",
-                                                aliases=[SubParser.RO.value],
-                                                help='heuristic search. see `girepo ro --help`')
-    subparser_heuristic.add_argument('names', nargs='+',
-                                     help='the target repositories')
-    add_options(subparser_heuristic, sort_keys)
+    subparser_heuristic = add_heuristic_subparser(subparsers_action)
+    add_common_options(subparser_heuristic, sort_keys)
 
     # strict
-    subparser_strict = subparsers.add_parser(SubParser.STRICT.value,
-                                             description="This is a strict search.\
-                                               This requires owner and repository name as \"onwer/repository\".",
-                                             aliases=[SubParser.ST.value], help='strict search. see `girepo st --help`')
-    subparser_strict.add_argument('names', type=full_name_type, nargs='+',
-                                  help='the target repositories written like owner/repository')
-    add_options(subparser_strict, sort_keys)
+    subparser_strict = add_strict_subparser(subparsers_action)
+    add_common_options(subparser_strict, sort_keys)
 
     return parser.parse_args(args)
 
 
-def add_options(parser, sort_keys):
+def add_strict_subparser(subparsers_action):
+    subparser_strict = subparsers_action.add_parser(SubParser.STRICT.value,
+                                                    description="This is a strict search.\
+                                               This requires owner and repository name as \"onwer/repository\".",
+                                                    aliases=[SubParser.ST.value],
+                                                    help='strict search. see `girepo st --help`')
+    subparser_strict.add_argument('names', type=full_name_type, nargs='+',
+                                  help='the target repositories written like owner/repository')
+    return subparser_strict
+
+
+def add_heuristic_subparser(subparsers_action):
+    subparser_heuristic = subparsers_action.add_parser(SubParser.ROUGH.value,
+                                                       description="This is a heuristic search.\
+                                                 This is possible to return the wrong repository info.",
+                                                       aliases=[SubParser.RO.value],
+                                                       help='heuristic search. see `girepo ro --help`')
+    subparser_heuristic.add_argument('names', nargs='+',
+                                     help='the target repositories')
+    return subparser_heuristic
+
+
+def add_common_options(parser, sort_keys):
     parser.add_argument('--headless', dest="headless", action='store_true',
                         help='not to describe table headers')
 
