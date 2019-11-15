@@ -21,7 +21,7 @@ def fetch(url: str):
         return response.status_code, json
 
 
-def search(repo_name: str):
+def search_by(repo_name: str):
     query = "?q={repo_name}&order=desc".format(repo_name=repo_name)
     full_url = "{base_url}/search/repositories{query}".format(base_url=BASE_URL, query=query)
     return fetch(full_url)
